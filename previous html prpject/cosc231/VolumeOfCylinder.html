@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<!-- Created by Todd Shmayda on 2/23/2021 -->
+
+<head>
+<meta charset="UTF-8">
+<title>Computing the Volume of a Cylinder</title>
+<link rel="stylesheet" type="text/css" href="../myStyles/01FirstCSSdocument.css">
+</head>
+<body>
+<h2>Computing the Volume of a Cylinder</h2>
+
+<p>Program by: Todd</p>
+
+<p>This program will take the radius and length of a cylinder, given as real numbers, 
+and will compute the area and volume of the cylinder, also displayed as real numbers.</p>
+<p>
+
+<label>Enter the radius of the cylinder: </label>
+<input id="radius" type="number" oninput="computeCylinder()" onchange="computeCylinder()">
+</p>
+
+<p>
+<label>Enter the length of the cylinder: </label>
+<input id="length" type="number" oninput="computeCylinder()" onchange="computeCylinder()">
+</p>
+
+<h2>Results:</h2>
+<h2 id="area"></h2>
+<h2 id="volume"></h2>
+
+<script>
+function computeCylinder(){
+	//input values
+    var radiusValue = document.getElementById('radius').value;
+	var lengthValue = document.getElementById('length').value;
+	//computes values
+	var areaValue = (radiusValue)*(radiusValue)*(Math.PI);
+	var volumeValue = (areaValue)*(lengthValue);
+	//prints the results
+	document.getElementById('area').innerHTML = "The area is "+areaValue.toFixed(4);
+	document.getElementById('volume').innerHTML = "The volume is "+volumeValue.toFixed(4);
+}
+</script>
+</body>
+</html>

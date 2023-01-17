@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<!-- Created by Todd Shmayda on 2/23/2021 -->
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="../myStyles/01FirstCSSdocument.css">
+<title>Coverting Feet to Meters</title>
+
+<script>
+function LengthConverter(valNum) 
+{
+	document.getElementById("outputMeters").innerHTML=valNum+" feet is "+(valNum/3.2808).toFixed(4)+" meters";
+}
+</script>
+</head>
+<body>
+<h2>Converting Feet to Meters</h2>
+
+<p>Program by: Todd</p>
+
+<p>This program will take a value for feet and return the converted measurment in meters.</p>
+
+<p>
+  <label>Enter a value for feet:</label>
+  <input id="inputFeet" type="number" oninput="LengthConverter(this.value)" onchange="LengthConverter(this.value)">
+</p>
+<h2>Result: <span id="outputMeters"></span></h2>
+
+</body>
+</html>

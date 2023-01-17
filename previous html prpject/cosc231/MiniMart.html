@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<!-- Created by Todd Shmayda on 3/6/2021 -->
+<head>
+<meta charset="UTF-8">
+<title>Mini Mart</title>
+<style>
+body
+{
+	margin:0;
+	background-color:#D3D2F6;
+	color:#320769;
+}
+div
+{
+	border: 1px solid;
+	padding:0px 10px;
+	margin: 2% 38%;
+	
+}
+table
+{
+	padding:0px 45px;
+}
+th
+{
+	padding:0px 15px 0px 0px;
+	text-align:center;
+}
+tr
+{
+	text-align:center;
+}
+td
+{
+	padding:0px 15px 0px 0px;
+	text-align:center;
+	width:29%;
+}
+h1.center
+{
+	text-align:center;
+}
+</style>
+<script>
+var item=[];
+var quantity=[];
+var cost=[];
+var total=0;
+var text="";
+function receipt()
+{
+	text="";
+	text="================================================";
+	text+="<br><h2>Mini-Mart EMU Receipt: Todd Shmayda</h2>";
+
+	text+="<table><tr><th>Item</th><th>Quantity</th><th>Cost</th></tr>";
+
+	for(var i=0; i<item.length; i++)
+		text+="<tr><td>"+item[i]+"</td><td>"+quantity[i]+"</td><td>"+cost[i]+"</td></tr>";
+
+	text+="</table>";
+	document.getElementById("display").innerHTML = text;
+}
+function insert()
+{
+	wholeNum = document.getElementById('amount').value;
+	if(wholeNum%1==0)
+	{
+		item.push(document.getElementById('goods').value);
+		quantity.push(document.getElementById('amount').value);
+		cost.push(document.getElementById('value').value);
+		receipt();
+		document.getElementById("goods").value="";
+		document.getElementById("amount").value="";
+		document.getElementById("value").value="";
+	}
+	else
+		alert("Please type a whole number.");
+}
+
+function checkOut()
+{
+	receipt();
+	for(var i=0; i<item.length; i++)
+	{
+		var c = cost[i];
+		var q = quantity[i];
+		total = total + (c*q);
+	}
+	text="<table><tr><td>Checkout Total: </td><td>"+total.toFixed(2)+"</td></tr></table>";
+	document.getElementById("print").innerHTML = text;
+}
+</script>
+</head>
+<body>
+<div>
+<h1 class="center">...Mini-Mart EMU Online...</h1>
+<pre>
+Enter your item information.
+Submit the item by clicking on "Add to Cart".
+Click on the Checkout button when done entering items.
+</pre>
+<form>
+<input id="goods" type="text" placeholder="Item"><br><br>
+<input id="value" type="number" placeholder="Cost"><br><br>
+<input id="amount" type="number" placeholder="Quantity"><br><br>               
+<input type="button" value="add to cart" onclick="insert()">
+<input type="button" value="go to check out" onclick="checkOut()">    
+</form>
+<p id="display"></p>
+<p id="print"></p>
+</div>	
+</body>
+</html>

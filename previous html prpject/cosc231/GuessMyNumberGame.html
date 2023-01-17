@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<!-- Created by Todd Shmayda on 2/23/2021 -->
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="../myStyles/01FirstCSSdocument.css">
+<title>Guess My Number Game</title>
+</head>
+<body>
+<h1>Guess My Number!</h1> 
+<p>Valid numbers are: 1 through 100</p> 
+  
+<form id="frm1"> 
+    <label>Enter your First NAME: </label>
+	<input type = "text" name="fname">
+	<br/>
+	<br>
+	<label>Enter your guess: </label> 
+    <input type="text" name="guess" onchange="submitguess"> 
+    <input id="submitguess" type="text" value="Submit Guess" onchange="submitguess"> 
+</form> 
+  
+<script type = "text/javascript"> 
+	var f = document.getElementById("frm1");
+	var y = Math.floor(Math.random() * 100 + 1); 
+      
+    //counting the guesses
+    var guess =	 1; 
+      
+    document.getElementById("submitguess").onclick = function()
+	{ 
+		//user input
+		
+		if(f.elements[1].value == y) 
+		{     
+			alert("Well well well, "+f.elements[0].value+". Well done! you actually got it right. You probably cheated."); 
+		} 
+		else if(f.elements[1].value > y) /* if guessed # > actual #*/ 
+		{     
+			guess++; 
+			alert("That was a big number you guessed there, "+f.elements[0].value+". Try a smaller number if you know whats good for ya."); 
+		} 
+		else
+		{ 
+			guess++; 
+			alert("I'm guessing you are not a fortune teller are ya, "+f.elements[0].value+"? Try thinking bigger.");
+		} 
+	} 
+</script>
+</body>
+</html>
